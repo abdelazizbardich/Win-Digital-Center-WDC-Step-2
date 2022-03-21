@@ -40,4 +40,14 @@ public class AdminController {
     public String delete(@PathVariable("id") long id){
         return null;
     }
+
+    @PostMapping("/login")
+    public String login(){
+        return null;
+    }
+
+    @PostMapping("/password/reset")
+    public String resetPassword(){
+        return null;
+    }
 }
