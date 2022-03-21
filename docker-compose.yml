@@ -5,4 +5,15 @@ services:
       dockerfile: Dockerfile
     container_name: "jarapp"
     ports:
-      - 8080:8080
+      - 8090:8080
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0.28
+    ports:
+      - 3302:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wdcenter
+      - MYSQL_USER=username
+      - MYSQL_PASSWORD=password
