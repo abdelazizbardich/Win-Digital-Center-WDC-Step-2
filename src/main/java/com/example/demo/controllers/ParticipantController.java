@@ -1,54 +1,61 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.models.Participant;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/participant")
 public class ParticipantController {
 
     @GetMapping("/")
-    public String getAll(){
-        return null;
+    public List<Participant> getAll(){
+        return List.of(
+                new Participant(),
+                new Participant(),
+                new Participant(),
+                new Participant(),
+                new Participant(),
+                new Participant()
+        );
     }
 
     @GetMapping("/find/{id}")
-    public String find(@PathVariable("id") long id){
-        return null;
+    public Participant find(@PathVariable("id") Long id){
+        Participant participant = new Participant();
+        participant.setUserId(id);
+        return participant;
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/update/{id}")
+    public Participant update(@RequestBody Participant participant,@PathVariable("id") Long id){
+        participant.setUserId(id);
+        return participant;
     }
 
-    @PostMapping("/update")
-    public String update(){
-        return null;
-    }
-
-    @GetMapping("/add")
-    public String add(){
-        return null;
-    }
-
-    @PostMapping("/store")
-    public String store(){
-        return null;
-    }
-
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/add")
+    public Participant store(@RequestBody Participant participant){
+        return participant;
     }
 
     @PostMapping("/login")
-    public String login(){
-        return null;
+    public Boolean login(@RequestBody Participant participant){
+        if(!(participant.getLogin().isBlank() || participant.getPassword().isBlank())){
+            return true;
+        }
+        return false;
     }
 
     @PostMapping("/password/reset")
-    public String resetPassword(){
-        return null;
+    public Boolean resetPassword(@RequestBody Participant participant){
+        if(participant.getLogin().isBlank())
+            return false;
+        if(participant.getPassword().isBlank() || participant.getNewPassword().isBlank())
+            return false;
+        if (!participant.getPassword().equals(participant.getNewPassword()))
+            return false;
+        return true;
     }
 }

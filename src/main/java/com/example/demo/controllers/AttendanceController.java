@@ -1,44 +1,43 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Participate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/attendance")
 public class AttendanceController {
 
     @GetMapping("/")
-    public String getAll(){
-        return null;
+    public List<Participate> getAll(){
+        return List.of(
+                new Participate(),
+                new Participate(),
+                new Participate(),
+                new Participate(),
+                new Participate(),
+                new Participate(),
+                new Participate()
+        );
     }
 
     @GetMapping("/find/{id}")
-    public String find(@PathVariable("id") long id){
-        return null;
+    public Participate find(@PathVariable("id") Long id){
+        Participate participate = new Participate();
+        participate.setParticipateId(id);
+        return participate;
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/update/{id}")
+    public Participate update(@RequestBody Participate participate,@PathVariable("id") Long id){
+        participate.setParticipateId(id);
+        return participate;
     }
 
-    @PostMapping("/update")
-    public String update(){
-        return null;
-    }
-
-    @GetMapping("/add")
-    public String add(){
-        return null;
-    }
-
-    @PostMapping("/store")
-    public String store(){
-        return null;
-    }
-
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/add")
+    public Participate store(@RequestBody Participate participate){
+        return participate;
     }
 
 

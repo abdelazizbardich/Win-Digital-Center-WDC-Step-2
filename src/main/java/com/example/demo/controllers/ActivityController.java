@@ -1,43 +1,39 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Activity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/activity")
 public class ActivityController {
 
     @GetMapping("/")
-    public String getAll(){
-        return null;
+    public List<Activity> getAll(){
+        return List.of(
+                new Activity(),
+                new Activity(),
+                new Activity(),
+                new Activity(),
+                new Activity(),
+                new Activity()
+        );
     }
 
     @GetMapping("/find/{id}")
-    public String find(@PathVariable("id") long id){
-        return null;
+    public Activity find(@PathVariable("id") String id){
+        return new Activity();
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/update/{id}")
+    public Activity update(@RequestBody Activity activity,@PathVariable("id") Long id){
+        activity.setActivityId(id);
+        return activity;
     }
 
-    @PostMapping("/update")
-    public String update(){
-        return null;
-    }
-
-    @GetMapping("/add")
-    public String add(){
-        return null;
-    }
-
-    @PostMapping("/store")
-    public String store(){
-        return null;
-    }
-
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/add")
+    public Activity store(@RequestBody Activity activity){
+        return activity;
     }
 }

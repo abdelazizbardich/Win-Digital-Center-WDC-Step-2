@@ -1,43 +1,42 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Exercise;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/exercise")
 public class ExerciseController {
 
     @GetMapping("/")
-    public String getAll(){
-        return null;
+    public List<Exercise> getAll(){
+        return List.of(
+                new Exercise(),
+                new Exercise(),
+                new Exercise(),
+                new Exercise(),
+                new Exercise(),
+                new Exercise(),
+                new Exercise()
+        );
     }
 
     @GetMapping("/find/{id}")
-    public String find(@PathVariable("id") long id){
-        return null;
+    public Exercise find(@PathVariable("id") Long id){
+        Exercise exercise = new Exercise();
+        exercise.setExerciseId(id);
+        return exercise;
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/update/{id}")
+    public Exercise update(@RequestBody Exercise exercise,@PathVariable("id") Long id){
+        exercise.setExerciseId(id);
+        return exercise;
     }
 
-    @PostMapping("/update")
-    public String update(){
-        return null;
-    }
-
-    @GetMapping("/add")
-    public String add(){
-        return null;
-    }
-
-    @PostMapping("/store")
-    public String store(){
-        return null;
-    }
-
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/add")
+    public Exercise store(@RequestBody Exercise exercise){
+        return exercise;
     }
 }

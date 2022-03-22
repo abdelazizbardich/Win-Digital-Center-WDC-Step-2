@@ -1,54 +1,64 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.models.Participant;
+import com.example.demo.models.Responsible;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/responsible")
 public class ResponsibleController {
 
     @GetMapping("/")
-    public String getAll(){
-        return null;
+    public List<Responsible> getAll(){
+        return List.of(
+                new Responsible(),
+                new Responsible(),
+                new Responsible(),
+                new Responsible(),
+                new Responsible(),
+                new Responsible(),
+                new Responsible(),
+                new Responsible()
+        );
     }
 
     @GetMapping("/find/{id}")
-    public String find(@PathVariable("id") long id){
-        return null;
+    public Responsible find(@PathVariable("id") Long id){
+        Responsible responsible = new Responsible();
+        responsible.setUserId(id);
+        return responsible;
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/update/{id}")
+    public Responsible update(@RequestBody Responsible responsible,@PathVariable("id") Long id){
+        responsible.setUserId(id);
+        return responsible;
     }
 
-    @PostMapping("/update")
-    public String update(){
-        return null;
-    }
-
-    @GetMapping("/add")
-    public String add(){
-        return null;
-    }
-
-    @PostMapping("/store")
-    public String store(){
-        return null;
-    }
-
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @PostMapping("/add")
+    public Responsible store(@RequestBody Responsible responsible){
+        return responsible;
     }
 
     @PostMapping("/login")
-    public String login(){
-        return null;
+    public Boolean login(@RequestBody Responsible responsible){
+        if(!(responsible.getLogin().isBlank() || responsible.getPassword().isBlank())){
+            return true;
+        }
+        return false;
     }
 
     @PostMapping("/password/reset")
-    public String resetPassword(){
-        return null;
+    public Boolean resetPassword(@RequestBody Responsible responsible){
+        if(responsible.getLogin().isBlank())
+            return false;
+        if(responsible.getPassword().isBlank() || responsible.getNewPassword().isBlank())
+            return false;
+        if (!responsible.getPassword().equals(responsible.getNewPassword()))
+            return false;
+        return true;
     }
 }

@@ -10,6 +10,6 @@ public class HomeController {
 
     @GetMapping("/")
     public List<String> hello(){
-        return  List.of("hello world");
+        return  List.of("hello world","hello world","hello world","hello world","hello world","hello world","hello world");
     }
 }
