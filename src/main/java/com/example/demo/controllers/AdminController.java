@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.Services.UserService;
 import com.example.demo.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,48 +12,46 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdminController {
 
+    private UserService userService;
+
+    @Autowired
+    public AdminController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/")
     public List<User> getAll(){
-        return List.of(
-                new User(),
-                new User(),
-                new User(),
-                new User(),
-                new User(),
-                new User()
-        );
+        return userService.getAll();
     }
 
     @GetMapping("/find/{id}")
     public User find(@PathVariable("id") Long id){
-        User user = new User();
-        user.setUserId(id);
-        return user;
+        return userService.get(id);
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public User update(@RequestBody User user,@PathVariable("id") Long id){
-        System.out.println("id: "+id);
-        return user;
+        user.setUserId(id);
+        return userService.update(user);
     }
 
     @PostMapping("/add")
     public User store(@RequestBody User user){
-        return user;
+        return userService.add(user);
     }
 
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id){
-        return null;
+    @DeleteMapping("/delete/{id}")
+    public boolean delete(@RequestBody User user){
+        return userService.delete(user);
     }
 
     @PostMapping("/login")
     public User login(@RequestBody User user){
-        return user;
+        return userService.login(user);
     }
 
     @PostMapping("/password/reset")
     public User resetPassword(@RequestBody User user){
-        return user;
+        return userService.resetPassword(user);
     }
 }

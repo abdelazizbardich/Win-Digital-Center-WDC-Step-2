@@ -1,6 +1,9 @@
 package com.example.demo.Repositories;
 
+import com.example.demo.models.Role;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface RoleRepository extends CrudRepository<RoleRepository,Long> {
+@Repository
+public interface RoleRepository extends CrudRepository<Role,Long> {
 }

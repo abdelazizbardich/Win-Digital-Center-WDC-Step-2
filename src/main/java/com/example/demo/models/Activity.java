@@ -35,10 +35,10 @@ public class Activity {
     @Column(name = "status")
     private ActivityStatus status;
 
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private LocalDateTime endDate;
 
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private LocalDateTime startDate;
 
     @ManyToOne
