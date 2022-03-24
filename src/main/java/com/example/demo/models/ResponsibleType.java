@@ -9,10 +9,14 @@ public class ResponsibleType {
 
     @Id
     @Column(name = "responsible_type_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long responsibleTypeId;
 
     @Column(name = "type")
     private String type;
+
+    public ResponsibleType() {
+    }
 
     public ResponsibleType(Long responsibleTypeId, String type) {
         this.responsibleTypeId = responsibleTypeId;

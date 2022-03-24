@@ -30,6 +30,7 @@ public class ExerciseService implements Services<Exercise> {
 
     @Override
     public Exercise add(Exercise exercise) {
+        System.out.println(exercise);
         return exerciseRepository.save(exercise);
     }
 

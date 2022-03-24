@@ -20,6 +20,7 @@ public class Activity {
 
     @Id
     @Column(name = "activity_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long activityId;
 
     @Column(name = "title")

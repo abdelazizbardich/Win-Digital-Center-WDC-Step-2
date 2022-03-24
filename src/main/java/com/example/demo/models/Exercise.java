@@ -16,6 +16,7 @@ public class Exercise {
 
     @Id
     @Column(name = "exercise_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long exerciseId;
 
     @Column(name = "title")
@@ -34,27 +35,21 @@ public class Exercise {
     private LocalDateTime endDate;
 
 
-    @OneToMany
-    @JoinColumn(name = "exercise_id")
-    private List<Activity> activities;
-
-    public Exercise(Long exerciseId, String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate, List<Activity> activities) {
+    public Exercise(Long exerciseId, String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate) {
         this.exerciseId = exerciseId;
         this.title = title;
         this.year = year;
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.activities = activities;
     }
 
-    public Exercise(String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate, List<Activity> activities) {
+    public Exercise(String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate) {
         this.title = title;
         this.year = year;
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.activities = activities;
     }
 
     public Exercise() {
@@ -108,14 +103,6 @@ public class Exercise {
         this.endDate = endDate;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
-    }
-
     @Override
     public String toString() {
         return "Exercise{" +
@@ -125,7 +112,6 @@ public class Exercise {
                 ", status=" + status +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", activities=" + activities +
                 '}';
     }
 }

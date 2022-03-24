@@ -9,6 +9,7 @@ public class Participate {
 
     @Id
     @Column(name = "participate_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long participateId;
 
     @ManyToOne

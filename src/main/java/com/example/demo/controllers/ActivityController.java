@@ -3,12 +3,17 @@ package com.example.demo.controllers;
 import com.example.demo.Services.ActivityService;
 import com.example.demo.models.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/activity")
+@ResponseBody
 public class ActivityController {
 
     private final ActivityService activityService;
@@ -24,8 +29,12 @@ public class ActivityController {
     }
 
     @GetMapping("/find/{id}")
-    public Activity find(@PathVariable("id") Long id){
-        return activityService.get(id);
+    public ResponseEntity<Activity> find(@PathVariable("id") Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.FOUND).body(activityService.get(id));
+        }catch (NoSuchElementException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @PutMapping("/update/{id}")
