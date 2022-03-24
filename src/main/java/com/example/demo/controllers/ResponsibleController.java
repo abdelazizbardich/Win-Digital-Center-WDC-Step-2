@@ -1,8 +1,10 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.Services.ResponsibleService;
 import com.example.demo.models.Participant;
 import com.example.demo.models.Responsible;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,54 +13,46 @@ import java.util.List;
 @RequestMapping("/responsible")
 public class ResponsibleController {
 
+    private ResponsibleService responsibleService;
+
+    @Autowired
+    public ResponsibleController(ResponsibleService responsibleService) {
+        this.responsibleService = responsibleService;
+    }
+
     @GetMapping("/")
     public List<Responsible> getAll(){
-        return List.of(
-                new Responsible(),
-                new Responsible(),
-                new Responsible(),
-                new Responsible(),
-                new Responsible(),
-                new Responsible(),
-                new Responsible(),
-                new Responsible()
-        );
+        return responsibleService.getAll();
     }
 
     @GetMapping("/find/{id}")
     public Responsible find(@PathVariable("id") Long id){
-        Responsible responsible = new Responsible();
-        responsible.setUserId(id);
-        return responsible;
+        return responsibleService.get(id);
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Responsible update(@RequestBody Responsible responsible,@PathVariable("id") Long id){
         responsible.setUserId(id);
-        return responsible;
+        return responsibleService.update(responsible);
     }
 
     @PostMapping("/add")
     public Responsible store(@RequestBody Responsible responsible){
-        return responsible;
+        return responsibleService.add(responsible);
+    }
+
+    @DeleteMapping("/delete")
+    public Boolean delete(@RequestBody  Responsible responsible){
+        return responsibleService.delete(responsible);
     }
 
     @PostMapping("/login")
-    public Boolean login(@RequestBody Responsible responsible){
-        if(!(responsible.getLogin().isBlank() || responsible.getPassword().isBlank())){
-            return true;
-        }
-        return false;
+    public Responsible login(@RequestBody Responsible responsible){
+        return responsibleService.login(responsible);
     }
 
     @PostMapping("/password/reset")
-    public Boolean resetPassword(@RequestBody Responsible responsible){
-        if(responsible.getLogin().isBlank())
-            return false;
-        if(responsible.getPassword().isBlank() || responsible.getNewPassword().isBlank())
-            return false;
-        if (!responsible.getPassword().equals(responsible.getNewPassword()))
-            return false;
-        return true;
+    public Responsible resetPassword(@RequestBody Responsible responsible){
+        return responsibleService.resetPassword(responsible);
     }
 }

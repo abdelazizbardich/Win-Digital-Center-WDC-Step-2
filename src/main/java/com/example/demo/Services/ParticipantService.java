@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.Repositories.ParticipantRepository;
 import com.example.demo.models.Participant;
+import com.example.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,13 @@ public class ParticipantService implements Services<Participant>{
             System.out.println(e.getMessage());
             return false;
         }
+    }
+
+    public Participant login(Participant participant){
+        return participantRepository.findFirstByEmail(participant.getEmail());
+    }
+
+    public Participant resetPassword(Participant participant){
+        return participantRepository.findFirstByEmail(participant.getEmail());
     }
 }

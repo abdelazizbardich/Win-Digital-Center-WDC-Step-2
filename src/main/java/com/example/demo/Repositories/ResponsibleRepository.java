@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResponsibleRepository extends CrudRepository<Responsible,Long> {
+
+
+    public Responsible findFirstByEmail(String email);
 }

@@ -49,4 +49,13 @@ public class ResponsibleService implements Services<Responsible>{
             return false;
         }
     }
+
+
+    public Responsible login(Responsible responsible){
+        return responsibleRepository.findFirstByEmail(responsible.getEmail());
+    }
+
+    public Responsible resetPassword(Responsible responsible){
+        return responsibleRepository.findFirstByEmail(responsible.getEmail());
+    }
 }

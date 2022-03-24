@@ -1,7 +1,10 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.Services.ParticipantService;
+import com.example.demo.Services.ParticipateService;
 import com.example.demo.models.Participant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,52 +13,46 @@ import java.util.List;
 @RequestMapping("/participant")
 public class ParticipantController {
 
+    private ParticipantService participantService;
+
+    @Autowired
+    public ParticipantController(ParticipantService participantService) {
+        this.participantService = participantService;
+    }
+
     @GetMapping("/")
     public List<Participant> getAll(){
-        return List.of(
-                new Participant(),
-                new Participant(),
-                new Participant(),
-                new Participant(),
-                new Participant(),
-                new Participant()
-        );
+        return participantService.getAll();
     }
 
     @GetMapping("/find/{id}")
     public Participant find(@PathVariable("id") Long id){
-        Participant participant = new Participant();
-        participant.setUserId(id);
-        return participant;
+        return participantService.get(id);
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Participant update(@RequestBody Participant participant,@PathVariable("id") Long id){
         participant.setUserId(id);
-        return participant;
+        return participantService.update(participant);
     }
 
     @PostMapping("/add")
     public Participant store(@RequestBody Participant participant){
-        return participant;
+        return participantService.add(participant);
+    }
+
+    @DeleteMapping("/delete")
+    public Boolean delete(@RequestBody Participant participant){
+        return participantService.delete(participant);
     }
 
     @PostMapping("/login")
-    public Boolean login(@RequestBody Participant participant){
-        if(!(participant.getLogin().isBlank() || participant.getPassword().isBlank())){
-            return true;
-        }
-        return false;
+    public Participant login(@RequestBody Participant participant){
+        return participantService.login(participant);
     }
 
     @PostMapping("/password/reset")
-    public Boolean resetPassword(@RequestBody Participant participant){
-        if(participant.getLogin().isBlank())
-            return false;
-        if(participant.getPassword().isBlank() || participant.getNewPassword().isBlank())
-            return false;
-        if (!participant.getPassword().equals(participant.getNewPassword()))
-            return false;
-        return true;
+    public Participant resetPassword(@RequestBody Participant participant){
+        return participantService.resetPassword(participant);
     }
 }
