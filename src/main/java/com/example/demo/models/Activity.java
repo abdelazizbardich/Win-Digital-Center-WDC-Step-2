@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -42,7 +44,8 @@ public class Activity {
     @Column(name = "start_date")
     private LocalDateTime startDate;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 

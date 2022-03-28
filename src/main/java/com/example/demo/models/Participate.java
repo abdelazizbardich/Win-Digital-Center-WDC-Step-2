@@ -12,12 +12,12 @@ public class Participate {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long participateId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "participant_ID")
 //    @Column(name = "participant_ID")
     private Participant participant;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "activity_id")
 //    @Column(name = "activity_id")
     private Activity activity;

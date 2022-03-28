@@ -36,7 +36,7 @@ public class User {
 
     private String newPassword;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "role_id")
     private Role role;
 

@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,22 +36,29 @@ public class Exercise {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "exercise_id")
+    private List<Activity> activities;
 
-    public Exercise(Long exerciseId, String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate) {
+
+    public Exercise(Long exerciseId, String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate, List<Activity> activities) {
         this.exerciseId = exerciseId;
         this.title = title;
         this.year = year;
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.activities = activities;
     }
 
-    public Exercise(String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate) {
+    public Exercise(String title, int year, ExerciseStatus status, LocalDateTime startDate, LocalDateTime endDate, List<Activity> activities) {
         this.title = title;
         this.year = year;
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.activities = activities;
     }
 
     public Exercise() {
@@ -101,6 +110,14 @@ public class Exercise {
 
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
     }
 
     @Override

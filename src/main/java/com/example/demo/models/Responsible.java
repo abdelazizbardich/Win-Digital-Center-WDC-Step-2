@@ -11,7 +11,7 @@ public class Responsible extends User {
     private String domain;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "responsible_type_id")
     private ResponsibleType type;
 
