@@ -1,9 +1,9 @@
 package com.example.demo.Repositories;
 
 import com.example.demo.models.Participate;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ParticipateRepository extends CrudRepository<Participate,Long> {
+public interface ParticipateRepository extends JpaRepository<Participate,Long> {
 }
