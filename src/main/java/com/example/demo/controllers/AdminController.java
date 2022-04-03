@@ -5,11 +5,13 @@ import com.example.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/admin")
+@RolesAllowed("ROLE_ADMIN")
 public class AdminController {
 
     private UserService userService;
