@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+
 import { ActivitiesAllComponent } from './activities/activities-all/activities-all.component';
 import { ActivitiesAddComponent } from './activities/activities-add/activities-add.component';
 import { ActivitiesUpdateComponent } from './activities/activities-update/activities-update.component';
@@ -28,7 +28,6 @@ import { LoginComponent } from './auth/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLoginComponent,
     ActivitiesAllComponent,
     ActivitiesAddComponent,
     ActivitiesUpdateComponent,
