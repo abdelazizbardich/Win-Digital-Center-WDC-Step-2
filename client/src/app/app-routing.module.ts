@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 // Routes components
+  // Auth
+    import { LoginComponent } from './auth/login/login.component';
   // activities
     import { ActivitiesAllComponent } from './activities/activities-all/activities-all.component';
     import { ActivitiesAddComponent } from './activities/activities-add/activities-add.component';
     import { ActivitiesUpdateComponent } from './activities/activities-update/activities-update.component';
     import { ActivitiesParticipateComponent } from './activities/activities-participate/activities-participate.component';
   // admin
-    import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     import { AdminsAllComponent } from './admin/admins-all/admins-all.component';
     import { AdminsAddComponent } from './admin/admins-add/admins-add.component';
     import { AdminsUpdateComponent } from './admin/admins-update/admins-update.component';
@@ -31,13 +32,14 @@ import { RouterModule, Routes } from '@angular/router';
     import { ResponsibleUpdateComponent } from './responsible/responsible-update/responsible-update.component';
 
 const routes: Routes = [
+  // Auth
+    {path:"login",component: LoginComponent},
   // activities
     {path:"activities",component:ActivitiesAllComponent},
     {path:"activities/add",component:ActivitiesAddComponent},
     {path:"activities/update",component:ActivitiesUpdateComponent},
     {path:"activities/participate",component:ActivitiesParticipateComponent},
   // Admin
-    {path:"admin/login", component:AdminLoginComponent},
     {path:"admin",component: AdminsAllComponent},
     {path:"admin/add",component: AdminsAddComponent},
     {path:"admin/update",component: AdminsUpdateComponent},

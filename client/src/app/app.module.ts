@@ -23,6 +23,7 @@ import { ParticipantAddComponent } from './participant/participant-add/participa
 import { ResponsibleAllComponent } from './responsible/responsible-all/responsible-all.component';
 import { ResponsibleAddComponent } from './responsible/responsible-add/responsible-add.component';
 import { ResponsibleUpdateComponent } from './responsible/responsible-update/responsible-update.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ResponsibleUpdateComponent } from './responsible/responsible-update/res
     ParticipantAddComponent,
     ResponsibleAllComponent,
     ResponsibleAddComponent,
-    ResponsibleUpdateComponent
+    ResponsibleUpdateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
