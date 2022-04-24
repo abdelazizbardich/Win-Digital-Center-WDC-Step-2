@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+  activeRoute:string|null= null;
+  constructor(router: Router) { 
+    this.activeRoute =  router.routerState.snapshot.url;
+  }
 
   ngOnInit(): void {
   }

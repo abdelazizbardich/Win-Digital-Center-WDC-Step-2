@@ -37,7 +37,13 @@ body{
       font-weight: 200;
     }
   }
+  button,.btn{
+    box-shadow: #2c71cb4f 0px 8px 16px;
+  }
   label{
     font-weight: 200;
+  }
+  a{
+    cursor: pointer;
   }
 }

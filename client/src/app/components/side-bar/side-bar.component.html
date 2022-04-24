@@ -1,11 +1,35 @@
 <div class="side-bar">
   <h1>WDC</h1>
   <ul>
-    <a href="/activities"><li class="active"><img src="/assets/imgs/icons/activity.png" alt="icon">Activities</li></a>
-    <a href="/admin"><li><img src="/assets/imgs/icons/user.png" alt="icon">Admin</li></a>
-    <a href="/attendance"><li><img src="/assets/imgs/icons/calendar.png" alt="icon">Attendance</li></a>
-    <a href="/exercise"><li><img src="/assets/imgs/icons/paper.png" alt="icon">Exercise</li></a>
-    <a href="/participant"><li><img src="/assets/imgs/icons/user-check.png" alt="icon">Participant</li></a>
-    <a href="/responsible"><li><img src="/assets/imgs/icons/user-tie.png" alt="icon">Responsible</li></a>
+    <a href="/dashboard/activities">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/activities'}">
+        <img src="/assets/imgs/icons/activity.png" alt="icon">Activities
+      </li>
+    </a>
+    <a href="/dashboard/admin">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/admin'}">
+        <img src="/assets/imgs/icons/user.png" alt="icon">Admin
+      </li>
+    </a>
+    <a href="/dashboard/attendance">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/attendance'}">
+        <img src="/assets/imgs/icons/calendar.png" alt="icon">Attendance
+      </li>
+    </a>
+    <a href="/dashboard/exercise">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/exercise'}">
+        <img src="/assets/imgs/icons/paper.png" alt="icon">Exercise
+      </li>
+    </a>
+    <a href="/dashboard/participant">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/participant'}">
+        <img src="/assets/imgs/icons/user-check.png" alt="icon">Participant
+      </li>
+    </a>
+    <a href="/dashboard/responsible">
+      <li [ngClass]="{'active': activeRoute === '/dashboard/responsible'}">
+        <img src="/assets/imgs/icons/user-tie.png" alt="icon">Responsible
+      </li>
+    </a>
   </ul>
 </div>
