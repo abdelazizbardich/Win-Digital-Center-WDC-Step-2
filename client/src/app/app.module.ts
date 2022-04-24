@@ -24,6 +24,7 @@ import { ResponsibleAllComponent } from './pages/responsible/responsible-all/res
 import { ResponsibleAddComponent } from './pages/responsible/responsible-add/responsible-add.component';
 import { ResponsibleUpdateComponent } from './pages/responsible/responsible-update/responsible-update.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
     ResponsibleAllComponent,
     ResponsibleAddComponent,
     ResponsibleUpdateComponent,
-    LoginComponent
+    LoginComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
