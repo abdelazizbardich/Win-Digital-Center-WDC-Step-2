@@ -46,4 +46,33 @@ body{
   a{
     cursor: pointer;
   }
+  .notche{
+    position: relative;
+    overflow: hidden;
+    &::after{
+      content: '';
+      width: 350px;
+      height: 250px;
+      background-image: url('/assets/imgs/notche.png');
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right bottom;
+    }
+    &::before {
+      content: "WDC";
+      position: absolute;
+      right: 25px;
+      bottom: 15px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right bottom;
+      font-size: 32px;
+      color: #2273e147;
+      z-index: 1;
+      font-weight: 700;
+  }
+  }
 }
