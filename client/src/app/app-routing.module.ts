@@ -30,35 +30,39 @@ import { RouterModule, Routes } from '@angular/router';
     import { ResponsibleAllComponent } from './pages/responsible/responsible-all/responsible-all.component';
     import { ResponsibleAddComponent } from './pages/responsible/responsible-add/responsible-add.component';
     import { ResponsibleUpdateComponent } from './pages/responsible/responsible-update/responsible-update.component';
+    import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   // Auth
     {path:"login",component: LoginComponent},
-  // activities
-    {path:"activities",component:ActivitiesAllComponent},
-    {path:"activities/add",component:ActivitiesAddComponent},
-    {path:"activities/update",component:ActivitiesUpdateComponent},
-    {path:"activities/participate",component:ActivitiesParticipateComponent},
-  // Admin
-    {path:"admin",component: AdminsAllComponent},
-    {path:"admin/add",component: AdminsAddComponent},
-    {path:"admin/update",component: AdminsUpdateComponent},
-  // Attendance
-    {path:"attendance", component: AttendanceAllComponent},
-    {path:"attendance/add", component: AttendanceAddComponent},
-    {path:"attendance/update", component: AttendanceUpdateComponent},
-  // Exercise
-    {path:"exercise", component: ExerciseAllComponent},
-    {path:"exercise/add", component: ExerciseAddComponent},
-    {path:"exercise/update", component: ExerciseUpdateComponent},
-  // Participant
-    {path:"participant", component: ParticipantAllComponent},
-    {path:"participant/add", component: ParticipantAddComponent},
-    {path:"participant/update", component: ParticipantUpdateComponent},
-  // Responsible
-    {path:"responsible", component: ResponsibleAllComponent},
-    {path:"responsible/add", component: ResponsibleAddComponent},
-    {path:"responsible/update", component: ResponsibleUpdateComponent}
+    {path:"dashboard",component:DashboardComponent,children: [
+      // activities
+        {path:"activities",component:ActivitiesAllComponent},
+        {path:"activities/add",component:ActivitiesAddComponent},
+        {path:"activities/update",component:ActivitiesUpdateComponent},
+        {path:"activities/participate",component:ActivitiesParticipateComponent},
+      // Admin
+        {path:"admin",component: AdminsAllComponent},
+        {path:"admin/add",component: AdminsAddComponent},
+        {path:"admin/update",component: AdminsUpdateComponent},
+      // Attendance
+        {path:"attendance", component: AttendanceAllComponent},
+        {path:"attendance/add", component: AttendanceAddComponent},
+        {path:"attendance/update", component: AttendanceUpdateComponent},
+      // Exercise
+        {path:"exercise", component: ExerciseAllComponent},
+        {path:"exercise/add", component: ExerciseAddComponent},
+        {path:"exercise/update", component: ExerciseUpdateComponent},
+      // Participant
+        {path:"participant", component: ParticipantAllComponent},
+        {path:"participant/add", component: ParticipantAddComponent},
+        {path:"participant/update", component: ParticipantUpdateComponent},
+      // Responsible
+        {path:"responsible", component: ResponsibleAllComponent},
+        {path:"responsible/add", component: ResponsibleAddComponent},
+        {path:"responsible/update", component: ResponsibleUpdateComponent}
+    ]
+  }
 ];
 
 @NgModule({

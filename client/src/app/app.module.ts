@@ -25,6 +25,7 @@ import { ResponsibleAddComponent } from './pages/responsible/responsible-add/res
 import { ResponsibleUpdateComponent } from './pages/responsible/responsible-update/responsible-update.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     ResponsibleAddComponent,
     ResponsibleUpdateComponent,
     LoginComponent,
-    SideBarComponent
+    SideBarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
