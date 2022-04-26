@@ -4,10 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ActivitiesAllComponent } from './pages/activities/activities-all/activities-all.component';
-import { ActivitiesAddComponent } from './pages/activities/activities-add/activities-add.component';
-import { ActivitiesUpdateComponent } from './pages/activities/activities-update/activities-update.component';
-import { ActivitiesParticipateComponent } from './pages/activities/activities-participate/activities-participate.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 import { AdminsAllComponent } from './pages/admin/admins-all/admins-all.component';
 import { AdminsAddComponent } from './pages/admin/admins-add/admins-add.component';
 import { AdminsUpdateComponent } from './pages/admin/admins-update/admins-update.component';
@@ -26,14 +23,13 @@ import { ResponsibleUpdateComponent } from './pages/responsible/responsible-upda
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HomeComponent } from './pages/home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ActivitiesAllComponent,
-    ActivitiesAddComponent,
-    ActivitiesUpdateComponent,
-    ActivitiesParticipateComponent,
+    ActivitiesComponent,
     AdminsAllComponent,
     AdminsAddComponent,
     AdminsUpdateComponent,
@@ -51,11 +47,13 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ResponsibleUpdateComponent,
     LoginComponent,
     SideBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

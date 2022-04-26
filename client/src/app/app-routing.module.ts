@@ -6,10 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
   // Auth
     import { LoginComponent } from './pages/auth/login/login.component';
   // activities
-    import { ActivitiesAllComponent } from './pages/activities/activities-all/activities-all.component';
-    import { ActivitiesAddComponent } from './pages/activities/activities-add/activities-add.component';
-    import { ActivitiesUpdateComponent } from './pages/activities/activities-update/activities-update.component';
-    import { ActivitiesParticipateComponent } from './pages/activities/activities-participate/activities-participate.component';
+    import { ActivitiesComponent } from './pages/activities/activities.component';
   // admin
     import { AdminsAllComponent } from './pages/admin/admins-all/admins-all.component';
     import { AdminsAddComponent } from './pages/admin/admins-add/admins-add.component';
@@ -31,16 +28,15 @@ import { RouterModule, Routes } from '@angular/router';
     import { ResponsibleAddComponent } from './pages/responsible/responsible-add/responsible-add.component';
     import { ResponsibleUpdateComponent } from './pages/responsible/responsible-update/responsible-update.component';
     import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+  // home
+    import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   // Auth
+    {path:"",component: HomeComponent},
     {path:"login",component: LoginComponent},
     {path:"dashboard",component:DashboardComponent,children: [
       // activities
-        {path:"activities",component:ActivitiesAllComponent},
-        {path:"activities/add",component:ActivitiesAddComponent},
-        {path:"activities/update",component:ActivitiesUpdateComponent},
-        {path:"activities/participate",component:ActivitiesParticipateComponent},
+        {path:"activities",component:ActivitiesComponent},
       // Admin
         {path:"admin",component: AdminsAllComponent},
         {path:"admin/add",component: AdminsAddComponent},

@@ -1,0 +1,266 @@
+<div class="activities">
+  <div class="row align-items-center">
+    <div class="col-md"><h2>Activities</h2></div>
+    <div class="col-md-auto">
+      <a class="btn btn-primary" (click)="showAdd()">New activity</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Date(End-Start)</th>
+              <th>Exercise</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let activity of activities; index as i;">
+              <td>{{ activity.title }}</td>
+              <td>{{ activity.description }}</td>
+              <td>{{ activity.type }}</td>
+              <td>
+                <span *ngIf="activity.status" class="badge bg-success">Enabled</span>
+                <span *ngIf="!activity.status" class="badge bg-danger">Disabled</span>
+              </td>
+              <td><small><span class="mx-1 badge bg-secondary">{{ activity.date[0] }}</span><span class="mx-1 badge bg-secondary">{{ activity.date[1] }}</span></small></td>
+              <td>
+                <a [href]="'/dashboard/exercise/'+activity.exercise.id" class="btn rounded-pull badge bg-primary text-white">{{ activity.title }}</a>
+              </td>
+              <td>
+                <a (click)="showDelete(i)" class="mx-1"><img src="assets/imgs/icons/trash.png" alt=""></a>
+                <a (click)="showEdit(activity.id)" class="mx-1"><img src="assets/imgs/icons/edit.png" alt=""></a>
+                <a (click)="showMore(activity.id)" class="mx-1"><img src="assets/imgs/icons/more.png" alt=""></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="more" *ngIf="showPopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Activities: </strong>{{ activeElement.title }} </span>
+              <span *ngIf="activeElement.status" class="badge bg-success rounded-pill">Active</span>
+              <span *ngIf="!activeElement.status" class="badge bg-danger">Disabled</span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideMore()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <p class="description">{{ activeElement.description }}</p>
+        <div class="row details">
+          <div class="col-md-12 mb-3">
+            <strong>Type: </strong>{{ activeElement.type }}
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>Start date:</strong> {{ activeElement.date[0] }}
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>End date:</strong> {{ activeElement.date[1] }}
+          </div>
+          <hr>
+          <div class="col-md-12 mb-3">
+            <strong>Exercises:</strong><br>
+          </div>
+          <div class="col-md-6 mb-3">
+            <span><strong>Title:</strong> {{ activeElement.exercise.title }}</span>
+          </div>
+          <div class="col-md-6 mb-3">
+            <span><strong>Year:</strong> {{ activeElement.exercise.year }}</span>
+          </div>
+          <div class="col-md-6 mb-3">
+            <span><strong>Status: </strong>
+              <span *ngIf="activeElement.exercise.status" class="badge bg-success rounded-pill">Active</span>
+              <span *ngIf="!activeElement.exercise.status" class="badge bg-danger">Disabled</span>
+            </span>
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>Start date: </strong><span class="mx-1 badge bg-secondary">{{ activeElement.exercise.date[0] }}</span>
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>End date: </strong><span class="mx-1 badge bg-secondary">{{ activeElement.exercise.date[1] }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="update" *ngIf="showUpdatePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Update Activity:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideUpdatePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="title...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="start_date" class="form-label">Start date:</label>
+              <input type="text" [(ngModel)]="startDate" class="form-control" id="start_date" placeholder="start date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="end_date" class="form-label">end date:</label>
+              <input type="text" [(ngModel)]="endDate" class="form-control" id="end_date" placeholder="end date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="type" class="form-label">Type:</label>
+              <select id="type" [(ngModel)]="type" class="form-select form-control">
+                <option value="">Select a type...</option>
+                <option value="Formation">Formation</option>
+                <option value="Talk">Talk</option>
+                <option value="Événement">Événement</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="exercise" class="form-label">Exercise:</label>
+              <select id="exercise" [(ngModel)]="exerciseId" class="form-select form-control">
+                <option value="">Select a exercise...</option>
+                <option *ngFor="let exercise of exercises,index as i" [value]="exercise.id">{{ exercise.title }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="description" class="form-label">Description:</label>
+              <textarea id="description" [(ngModel)]="description" rows="7"></textarea>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="updateActivity()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add" *ngIf="showAddPopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Add Activity:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideAddPopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="title...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="start_date" class="form-label">Start date:</label>
+              <input type="text" [(ngModel)]="startDate" class="form-control" id="start_date" placeholder="start date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="end_date" class="form-label">end date:</label>
+              <input type="text" [(ngModel)]="endDate" class="form-control" id="end_date" placeholder="end date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="type" class="form-label">Type:</label>
+              <select id="type" [(ngModel)]="type" class="form-select form-control">
+                <option value="">Select a type...</option>
+                <option value="Formation">Formation</option>
+                <option value="Talk">Talk</option>
+                <option value="Événement">Événement</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="exercise" class="form-label">Exercise:</label>
+              <select id="exercise" [(ngModel)]="exerciseId" class="form-select form-control">
+                <option value="">Select a exercise...</option>
+                <option *ngFor="let exercise of exercises,index as i" [value]="exercise.id">{{ exercise.title }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="description" class="form-label">Description:</label>
+              <textarea id="description" [(ngModel)]="description" rows="7"></textarea>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="addActivity()" class="btn btn-lg btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="delete" *ngIf="showDeletePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Remove Activity:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideDeletePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+          <div class="col-md-12 my-3">
+            <span class="h3 text-danger">You're about to remove this activity: </span><br><span class="h2">{{ title }}</span>
+          </div>
+          <div class="col-md-12">
+            <div class="row justify-content-center">
+              <div class="col-md-3">
+                <a (click)="hideDeletePopup()" class="btn btn-info w-100">Cancel</a>
+              </div>
+              <div class="col-md-3">
+                <a (click)="deleteActivity()" class="btn btn-danger w-100">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

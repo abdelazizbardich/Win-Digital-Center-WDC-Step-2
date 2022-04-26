@@ -1,0 +1,39 @@
+header{
+  height: 15vh;
+  h1{
+    color: #fff;
+    position: relative;
+    width: fit-content;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: #2C70CB 0px 3px 7px;
+    span{
+      font-size: 15px;
+      font-weight: 100;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translateY(100%);
+    }
+  }
+}
+main{
+  height: calc(100vh - 15vh);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  h1{
+    color: #2C70CB;
+    position: relative;
+    width: fit-content;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: #2c71cb72 0px 3px 7px;
+    margin: auto;
+  }
+  a.btn{
+    box-shadow: #2c71cb72 0px 3px 7px;
+  }
+}
