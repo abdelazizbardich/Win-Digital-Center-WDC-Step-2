@@ -16,9 +16,7 @@ import { RouterModule, Routes } from '@angular/router';
     import { AttendanceAddComponent } from './pages/attendance/attendance-add/attendance-add.component';
     import { AttendanceUpdateComponent } from './pages/attendance/attendance-update/attendance-update.component';
   // Exercise
-    import { ExerciseAllComponent } from './pages/exercise/exercise-all/exercise-all.component';
-    import { ExerciseAddComponent } from './pages/exercise/exercise-add/exercise-add.component';
-    import { ExerciseUpdateComponent } from './pages/exercise/exercise-update/exercise-update.component';
+    import { ExerciseComponent } from './pages/exercise/exercise.component';
   // Participant
     import { ParticipantAllComponent } from './pages/participant/participant-all/participant-all.component';
     import { ParticipantAddComponent } from './pages/participant/participant-add/participant-add.component';
@@ -46,9 +44,7 @@ const routes: Routes = [
         {path:"attendance/add", component: AttendanceAddComponent},
         {path:"attendance/update", component: AttendanceUpdateComponent},
       // Exercise
-        {path:"exercise", component: ExerciseAllComponent},
-        {path:"exercise/add", component: ExerciseAddComponent},
-        {path:"exercise/update", component: ExerciseUpdateComponent},
+        {path:"exercise", component: ExerciseComponent},
       // Participant
         {path:"participant", component: ParticipantAllComponent},
         {path:"participant/add", component: ParticipantAddComponent},

@@ -1,0 +1,191 @@
+<div class="exercises">
+  <div class="row align-items-center">
+    <div class="col-md"><h2>Exercise</h2></div>
+    <div class="col-md-auto">
+      <a class="btn btn-primary" (click)="showAdd()">New exercise</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Status</th>
+              <th>Date(End-Start)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let exercise of exercises; index as i;">
+              <td>{{ exercise.title }}</td>
+              <td>{{ exercise.year }}</td>
+              <td>
+                <span *ngIf="exercise.status" class="badge bg-success">Enabled</span>
+                <span *ngIf="!exercise.status" class="badge bg-danger">Disabled</span>
+              </td>
+              <td><small><span class="mx-1 badge bg-secondary">{{ exercise.date[0] }}</span><span class="mx-1 badge bg-secondary">{{ exercise.date[1] }}</span></small></td>
+              <td>
+                <a (click)="showDelete(i)" class="mx-1"><img src="assets/imgs/icons/trash.png" alt=""></a>
+                <a (click)="showEdit(exercise.id)" class="mx-1"><img src="assets/imgs/icons/edit.png" alt=""></a>
+                <a (click)="showMore(exercise.id)" class="mx-1"><img src="assets/imgs/icons/more.png" alt=""></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="more" *ngIf="showPopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>exercises: </strong>{{ activeElement.title }} </span>
+              <span *ngIf="activeElement.status" class="badge bg-success rounded-pill">Active</span>
+              <span *ngIf="!activeElement.status" class="badge bg-danger">Disabled</span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideMore()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row details">
+          <div class="col-md-12 mb-3">
+            <strong>Year: </strong>{{ activeElement.year }}
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>Start date:</strong> {{ activeElement.date[0] }}
+          </div>
+          <div class="col-md-6 mb-3">
+            <strong>End date:</strong> {{ activeElement.date[1] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="update" *ngIf="showUpdatePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Update exercise:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideUpdatePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="title...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="start_date" class="form-label">Start date:</label>
+              <input type="text" [(ngModel)]="startDate" class="form-control" id="start_date" placeholder="start date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="end_date" class="form-label">end date:</label>
+              <input type="text" [(ngModel)]="endDate" class="form-control" id="end_date" placeholder="end date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="year" class="form-label">Year:</label>
+              <input type="text" [(ngModel)]="year" class="form-control" id="year" placeholder="Year...">
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="updateExercise()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add" *ngIf="showAddPopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Add exercise:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideAddPopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="title...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="start_date" class="form-label">Start date:</label>
+              <input type="text" [(ngModel)]="startDate" class="form-control" id="start_date" placeholder="start date...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="year" class="form-label">Year:</label>
+              <input type="text" [(ngModel)]="year" class="form-control" id="year" placeholder="Year...">
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="addExercise()" class="btn btn-lg btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="delete" *ngIf="showDeletePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Remove exercise:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideDeletePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+          <div class="col-md-12 my-3">
+            <span class="h3 text-danger">You're about to remove this exercise: </span><br><span class="h2">{{ title }}</span>
+          </div>
+          <div class="col-md-12">
+            <div class="row justify-content-center">
+              <div class="col-md-3">
+                <a (click)="hideDeletePopup()" class="btn btn-info w-100">Cancel</a>
+              </div>
+              <div class="col-md-3">
+                <a (click)="deleteExercise()" class="btn btn-danger w-100">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

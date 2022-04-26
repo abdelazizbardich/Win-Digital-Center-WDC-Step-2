@@ -11,9 +11,7 @@ import { AdminsUpdateComponent } from './pages/admin/admins-update/admins-update
 import { AttendanceAllComponent } from './pages/attendance/attendance-all/attendance-all.component';
 import { AttendanceAddComponent } from './pages/attendance/attendance-add/attendance-add.component';
 import { AttendanceUpdateComponent } from './pages/attendance/attendance-update/attendance-update.component';
-import { ExerciseAllComponent } from './pages/exercise/exercise-all/exercise-all.component';
-import { ExerciseAddComponent } from './pages/exercise/exercise-add/exercise-add.component';
-import { ExerciseUpdateComponent } from './pages/exercise/exercise-update/exercise-update.component';
+import { ExerciseComponent } from './pages/exercise/exercise.component';
 import { ParticipantAllComponent } from './pages/participant/participant-all/participant-all.component';
 import { ParticipantUpdateComponent } from './pages/participant/participant-update/participant-update.component';
 import { ParticipantAddComponent } from './pages/participant/participant-add/participant-add.component';
@@ -36,9 +34,7 @@ import { FormsModule } from '@angular/forms';
     AttendanceAllComponent,
     AttendanceAddComponent,
     AttendanceUpdateComponent,
-    ExerciseAllComponent,
-    ExerciseAddComponent,
-    ExerciseUpdateComponent,
+    ExerciseComponent,
     ParticipantAllComponent,
     ParticipantUpdateComponent,
     ParticipantAddComponent,
