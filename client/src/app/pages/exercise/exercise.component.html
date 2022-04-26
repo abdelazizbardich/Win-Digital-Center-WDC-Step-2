@@ -107,6 +107,16 @@
               <input type="text" [(ngModel)]="year" class="form-control" id="year" placeholder="Year...">
             </div>
           </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="status" class="form-label">Status:</label>
+              <select id="status" [(ngModel)]="status" class="form-select form-control">
+                <option value="">Select a status...</option>
+                <option value="true">active</option>
+                <option value="false">inactive</option>
+              </select>
+            </div>
+          </div>
           <div class="col-md-10 offset-md-1">
             <div class="form-group m-auto">
               <button (click)="updateExercise()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
@@ -147,6 +157,16 @@
             <div class="form-group">
               <label for="year" class="form-label">Year:</label>
               <input type="text" [(ngModel)]="year" class="form-control" id="year" placeholder="Year...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="status" class="form-label">Status:</label>
+              <select id="status" [(ngModel)]="status" class="form-select form-control">
+                <option value="">Select a status...</option>
+                <option value="active">active</option>
+                <option value="inactive">inactive</option>
+              </select>
             </div>
           </div>
           <div class="col-md-10 offset-md-1">
