@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResponsibleAllComponent } from './responsible-all.component';
+import { ParticipantComponent } from './participant.component';
 
-describe('ResponsibleAllComponent', () => {
-  let component: ResponsibleAllComponent;
-  let fixture: ComponentFixture<ResponsibleAllComponent>;
+describe('ParticipantComponent', () => {
+  let component: ParticipantComponent;
+  let fixture: ComponentFixture<ParticipantComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResponsibleAllComponent ]
+      declarations: [ ParticipantComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResponsibleAllComponent);
+    fixture = TestBed.createComponent(ParticipantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

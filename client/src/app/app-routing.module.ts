@@ -4,28 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Routes components
   // Auth
-    import { LoginComponent } from './pages/auth/login/login.component';
-  // activities
-    import { ActivitiesComponent } from './pages/activities/activities.component';
-  // admin
-    import { AdminsAllComponent } from './pages/admin/admins-all/admins-all.component';
-    import { AdminsAddComponent } from './pages/admin/admins-add/admins-add.component';
-    import { AdminsUpdateComponent } from './pages/admin/admins-update/admins-update.component';
-  // Attendance
-    import { AttendanceAllComponent } from './pages/attendance/attendance-all/attendance-all.component';
-    import { AttendanceAddComponent } from './pages/attendance/attendance-add/attendance-add.component';
-    import { AttendanceUpdateComponent } from './pages/attendance/attendance-update/attendance-update.component';
-  // Exercise
-    import { ExerciseComponent } from './pages/exercise/exercise.component';
-  // Participant
-    import { ParticipantAllComponent } from './pages/participant/participant-all/participant-all.component';
-    import { ParticipantAddComponent } from './pages/participant/participant-add/participant-add.component';
-    import { ParticipantUpdateComponent } from './pages/participant/participant-update/participant-update.component';
-  // Responsible
-    import { ResponsibleAllComponent } from './pages/responsible/responsible-all/responsible-all.component';
-    import { ResponsibleAddComponent } from './pages/responsible/responsible-add/responsible-add.component';
-    import { ResponsibleUpdateComponent } from './pages/responsible/responsible-update/responsible-update.component';
-    import { DashboardComponent } from './pages/dashboard/dashboard.component';
+    import { LoginComponent } from './pages/auth/login/login.component'; // login
+    import { ActivitiesComponent } from './pages/activities/activities.component'; // activities
+    import { AdminsComponent } from './pages/admin/admins.component'; // admin
+    import { AttendanceComponent } from './pages/attendance/attendance.component'; // Attendance
+    import { ExerciseComponent } from './pages/exercise/exercise.component'; // Exercise
+    import { ParticipantComponent } from './pages/participant/participant.component'; // Participant
+    import { ResponsibleComponent } from './pages/responsible/responsible.component'; // Responsible
+    import { DashboardComponent } from './pages/dashboard/dashboard.component'; // Dashboard
   // home
     import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
@@ -33,26 +19,12 @@ const routes: Routes = [
     {path:"",component: HomeComponent},
     {path:"login",component: LoginComponent},
     {path:"dashboard",component:DashboardComponent,children: [
-      // activities
-        {path:"activities",component:ActivitiesComponent},
-      // Admin
-        {path:"admin",component: AdminsAllComponent},
-        {path:"admin/add",component: AdminsAddComponent},
-        {path:"admin/update",component: AdminsUpdateComponent},
-      // Attendance
-        {path:"attendance", component: AttendanceAllComponent},
-        {path:"attendance/add", component: AttendanceAddComponent},
-        {path:"attendance/update", component: AttendanceUpdateComponent},
-      // Exercise
-        {path:"exercise", component: ExerciseComponent},
-      // Participant
-        {path:"participant", component: ParticipantAllComponent},
-        {path:"participant/add", component: ParticipantAddComponent},
-        {path:"participant/update", component: ParticipantUpdateComponent},
-      // Responsible
-        {path:"responsible", component: ResponsibleAllComponent},
-        {path:"responsible/add", component: ResponsibleAddComponent},
-        {path:"responsible/update", component: ResponsibleUpdateComponent}
+        {path:"activities",component:ActivitiesComponent}, // activities
+        {path:"admin",component: AdminsComponent}, // Admin
+        {path:"attendance", component: AttendanceComponent}, // Attendance
+        {path:"exercise", component: ExerciseComponent}, // Exercise
+        {path:"participant", component: ParticipantComponent}, // Participant
+        {path:"responsible", component: ResponsibleComponent} // Responsible
     ]
   }
 ];
