@@ -10,9 +10,9 @@ export class ResponsibleComponent implements OnInit {
   // Data
   responsibles:Responsible[] =
   [
-    {id:1,firstname:"1 first name",lastname:"1 last name",login:"username",phone:"+212612345678",email:"participant1@email.com",status:true,domain:"simple domain",password:"password1234"},
-    {id:2,firstname:"2 first name",lastname:"2 last name",login:"username",phone:"+212612345678",email:"participant2@email.com",status:true,domain:"simple domain",password:"password1234"},
-    {id:3,firstname:"3 first name",lastname:"3 last name",login:"username",phone:"+212612345678",email:"participant3@email.com",status:true,domain:"simple domain",password:"password1234"}
+    {id:1,firstname:"1 first name",lastname:"1 last name",login:"username",phone:"+212612345678",email:"responsible1@email.com",status:true,domain:"simple domain",password:"password1234"},
+    {id:2,firstname:"2 first name",lastname:"2 last name",login:"username",phone:"+212612345678",email:"responsible2@email.com",status:true,domain:"simple domain",password:"password1234"},
+    {id:3,firstname:"3 first name",lastname:"3 last name",login:"username",phone:"+212612345678",email:"responsible3@email.com",status:true,domain:"simple domain",password:"password1234"}
   ]
 
 
@@ -82,7 +82,7 @@ export class ResponsibleComponent implements OnInit {
   }
 
   // data percistence
-  updateParticipant(){
+  updateResponsible(){
     console.log(
       {
         id: this.id,
@@ -96,7 +96,7 @@ export class ResponsibleComponent implements OnInit {
       }
     )
   }
-  addParticipant(){
+  addResponsible(){
     console.log(
       {
         firstName: this.firstName,
@@ -109,7 +109,7 @@ export class ResponsibleComponent implements OnInit {
       }
     )
   }
-  deleteParticipant(){
+  deleteResponsible(){
     this.showDeletePopup = false
     console.log({id:this.id,firstname: this.firstName,lastname: this.lastName});
   }

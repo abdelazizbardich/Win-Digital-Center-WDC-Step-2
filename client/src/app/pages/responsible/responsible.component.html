@@ -115,7 +115,7 @@
           </div>
           <div class="col-md-10 offset-md-1">
             <div class="form-group m-auto">
-              <button (click)="updateParticipant()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+              <button (click)="updateResponsible()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
         <div class="row my-3 align-items-center">
           <div class="col-md">
             <div class="title">
-              <span><strong>Add participant:</strong></span>
+              <span><strong>Add responsible:</strong></span>
             </div>
           </div>
           <div class="col-md-auto">
@@ -194,7 +194,7 @@
           </div>
           <div class="col-md-10 offset-md-1">
             <div class="form-group m-auto">
-              <button (click)="addParticipant()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+              <button (click)="addResponsible()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
             </div>
           </div>
         </div>
@@ -207,14 +207,14 @@
         <div class="row my-3 align-items-center">
           <div class="col-md">
             <div class="title">
-              <span><strong>Remove participant:</strong></span>
+              <span><strong>Remove responsible:</strong></span>
             </div>
           </div>
           <div class="col-md-auto">
             <a><span (click)="hideDeletePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
           </div>
           <div class="col-md-12 my-3">
-            <span class="h3 text-danger">You're about to remove this participant: </span><br><span class="h2">{{ firstName }} {{ lastName }}</span>
+            <span class="h3 text-danger">You're about to remove this responsible: </span><br><span class="h2">{{ firstName }} {{ lastName }}</span>
           </div>
           <div class="col-md-12">
             <div class="row justify-content-center">
@@ -222,7 +222,7 @@
                 <a (click)="hideDeletePopup()" class="btn btn-info w-100">Cancel</a>
               </div>
               <div class="col-md-3">
-                <a (click)="deleteParticipant()" class="btn btn-danger w-100">Delete</a>
+                <a (click)="deleteResponsible()" class="btn btn-danger w-100">Delete</a>
               </div>
             </div>
           </div>
