@@ -1,1 +1,234 @@
-<p>responsible-all works!</p>
+<div class="responsibles">
+  <div class="row align-items-center">
+    <div class="col-md"><h2>Responsible</h2></div>
+    <div class="col-md-auto">
+      <a class="btn btn-primary" (click)="showAdd()">New responsible</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Login</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Domain</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let responsible of responsibles; index as i;">
+              <td>{{ responsible.firstname }}</td>
+              <td>{{ responsible.lastname }}</td>
+              <td>{{ responsible.login }}</td>
+              <td>{{ responsible.phone }}</td>
+              <td>{{ responsible.email }}</td>
+              <td>
+                <span *ngIf="responsible.status" class="badge bg-success">Enabled</span>
+                <span *ngIf="!responsible.status" class="badge bg-danger">Disabled</span>
+              </td>
+              <td>{{ responsible.domain }}</td>
+              <td>
+                <a (click)="showDelete(i)" class="mx-1"><img src="assets/imgs/icons/trash.png" alt=""></a>
+                <a (click)="showEdit(responsible.id)" class="mx-1"><img src="assets/imgs/icons/edit.png" alt=""></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="update" *ngIf="showUpdatePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Update responsible:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideUpdatePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="first_name" class="form-label">First name:</label>
+              <input [(ngModel)]="firstName" type="text" class="form-control" id="first_name" placeholder="first_name...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="last_name" class="form-label">Last name:</label>
+              <input [(ngModel)]="lastName" type="text" class="form-control" id="last_name" placeholder="last_name...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="login" class="form-label">Login:</label>
+              <input [(ngModel)]="login" type="text" class="form-control" id="login" placeholder="login...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone:</label>
+              <input [(ngModel)]="phone" type="text" class="form-control" id="phone" placeholder="phone...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="email" class="form-label">Email:</label>
+              <input [(ngModel)]="email" type="text" class="form-control" id="email" placeholder="email...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="status" class="form-label">Status:</label>
+              <input [(ngModel)]="status" type="text" class="form-control" id="status" placeholder="status...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="domain" class="form-label">Domain:</label>
+              <input [(ngModel)]="domain" type="text" class="form-control" id="domain" placeholder="domain...">
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="old_password" class="form-label">Old password:</label>
+              <input [(ngModel)]="Password" type="text" class="form-control" id="old_password" placeholder="old_password...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="password" class="form-label">Password":</label>
+              <input [(ngModel)]="newPassword" type="text" class="form-control" id="password" placeholder="password...">
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="updateParticipant()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add" *ngIf="showAddPopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Add participant:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideAddPopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="first_name" class="form-label">First name:</label>
+              <input [(ngModel)]="firstName" type="text" class="form-control" id="first_name" placeholder="first_name...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="last_name" class="form-label">Last name:</label>
+              <input [(ngModel)]="lastName" type="text" class="form-control" id="last_name" placeholder="last_name...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="login" class="form-label">Login:</label>
+              <input [(ngModel)]="login" type="text" class="form-control" id="login" placeholder="login...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone:</label>
+              <input [(ngModel)]="phone" type="text" class="form-control" id="phone" placeholder="phone...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="email" class="form-label">Email:</label>
+              <input [(ngModel)]="email" type="text" class="form-control" id="email" placeholder="email...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="status" class="form-label">Status:</label>
+              <input [(ngModel)]="status" type="text" class="form-control" id="status" placeholder="status...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="domain" class="form-label">Domain:</label>
+              <input [(ngModel)]="domain" type="text" class="form-control" id="domain" placeholder="domain...">
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="old_password" class="form-label">Old password:</label>
+              <input [(ngModel)]="Password" type="text" class="form-control" id="old_password" placeholder="old_password...">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="password" class="form-label">Password":</label>
+              <input [(ngModel)]="newPassword" type="text" class="form-control" id="password" placeholder="password...">
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <div class="form-group m-auto">
+              <button (click)="addParticipant()" class="btn-lg btn btn-primary m-auto w-100" type="submit">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="delete" *ngIf="showDeletePopup">
+    <div class="box notche p-3">
+      <div class="container">
+        <div class="row my-3 align-items-center">
+          <div class="col-md">
+            <div class="title">
+              <span><strong>Remove participant:</strong></span>
+            </div>
+          </div>
+          <div class="col-md-auto">
+            <a><span (click)="hideDeletePopup()" class="text-danger"><img width="16" src="assets/imgs/icons/close.png" alt=""></span></a>
+          </div>
+          <div class="col-md-12 my-3">
+            <span class="h3 text-danger">You're about to remove this participant: </span><br><span class="h2">{{ firstName }} {{ lastName }}</span>
+          </div>
+          <div class="col-md-12">
+            <div class="row justify-content-center">
+              <div class="col-md-3">
+                <a (click)="hideDeletePopup()" class="btn btn-info w-100">Cancel</a>
+              </div>
+              <div class="col-md-3">
+                <a (click)="deleteParticipant()" class="btn btn-danger w-100">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
