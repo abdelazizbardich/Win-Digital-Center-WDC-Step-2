@@ -112,4 +112,7 @@ body{
       font-weight: 200;
     }
   }
+  .form-check-input[type=checkbox] {
+    padding: unset !important;
+  }
 }

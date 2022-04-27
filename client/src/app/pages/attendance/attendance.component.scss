@@ -1,0 +1,57 @@
+.attendances{
+  h2{
+    font-size: 52px;
+    color: #2F80ED;
+    font-weight: 200;
+  }
+  .update{
+    z-index: 9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2f81ed84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box{
+      min-height: unset;
+      height: auto;
+    }
+  }
+  .add{
+    z-index: 9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2f81ed84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box{
+      min-height: unset;
+      height: auto;
+    }
+  }
+  .delete{
+    z-index: 9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2f81ed84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .box{
+      height: auto;
+      min-height: unset;
+      padding-bottom:50px;
+    }
+  }
+}
