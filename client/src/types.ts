@@ -3,3 +3,4 @@ type Activity = {id:number|null,title:string,description:string,type:string,stat
 type Participant = {id:number|null,firstname:string,lastname:string,login:string,phone:string,email:string,status:boolean,domain:string,structure:string,password:string}
 type Responsible = {id:number|null,firstname:string,lastname:string,login:string,phone:string,email:string,status:boolean,domain:string,password:string}
 type Attendance = {id:number|null,participantId:number,activityId:number,attendance:boolean}
+type Admin = {id:number|null,firstname:string,lastname:string,login:string,phone:string,email:string,status:boolean,password:string}
