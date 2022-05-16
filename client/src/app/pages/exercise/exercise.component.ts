@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Exercise } from 'src/objects/Exercise';
 
 @Component({
   selector: 'app-exercise-all',
   templateUrl: './exercise.component.html',
   styleUrls: ['./exercise.component.scss']
 })
+
+
 export class ExerciseComponent implements OnInit {
 
 

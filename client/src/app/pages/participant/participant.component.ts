@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Participant } from 'src/objects/Participant';
 
 @Component({
   selector: 'app-participant',

@@ -1,5 +1,8 @@
+import { ActivityService } from './../../services/activity/activity.service';
 import { Component, OnInit,Input, Output } from '@angular/core'
 import "../../../types"
+import { Activity } from 'src/objects/Activity';
+import { Exercise } from 'src/objects/Exercise';
 @Component({
   selector: 'app-activities',
   templateUrl: './activities.component.html',
@@ -47,10 +50,11 @@ export class ActivitiesComponent implements OnInit {
   type:string = ""
   exerciseId:number | null = null
   description:string = ""
-  constructor() { }
+  constructor(private activityService:ActivityService) { }
 
   ngOnInit(): void {
-
+    let data : Activity = this.activityService.getAll();
+    console.log(data);
   }
 
   showMore(id:number|null){
@@ -127,6 +131,5 @@ export class ActivitiesComponent implements OnInit {
   deleteActivity(){
     this.showDeletePopup = false
     console.log({id:this.id,title:this.title});
-
   }
 }

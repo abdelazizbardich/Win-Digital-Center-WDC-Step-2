@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity } from 'src/objects/Activity';
+import { Attendance } from 'src/objects/Attendance';
+import { Participant } from 'src/objects/Participant';
 
 @Component({
   selector: 'app-attendance',
